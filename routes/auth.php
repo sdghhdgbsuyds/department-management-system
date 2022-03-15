@@ -14,37 +14,36 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('auth')->group(function () {
-
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
 });
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 Route::get('login/steam', function () {
     return Socialite::driver('steam')->redirect();
 })->name('auth.steam');
 
-Route::get('login/discord', function () {
-    return Socialite::driver('discord')->redirect();
-})->name('auth.discord');
-
-Route::get('login/discord/handle', function () {
-    $user = Socialite::driver('discord')->user();
-
-    // All providers...
-    $userInfo = $user->getId() . ' ' .
-        $user->getNickname() . ' ' .
-        $user->getName() . ' ' .
-        $user->getAvatar();
-
-    session(['user_info' => $userInfo]);
-
-    return session('user_info');
-});
-
 Route::get('/login/steam/handle', [LoginController::class, 'steam']);
 
-Route::get('/account/create', [AccountController::class, 'create'])->name('auth.account.create');
 
-Route::post('/account', [AccountController::class, 'store'])->name('auth.account.store');
+// Route::get('login/discord', function () {
+//     return Socialite::driver('discord')->redirect();
+// })->name('auth.discord');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::get('login/discord/handle', function () {
+//     $user = Socialite::driver('discord')->user();
+
+//     // All providers...
+//     $userInfo = $user->getId() . ' ' .
+//         $user->getNickname() . ' ' .
+//         $user->getName() . ' ' .
+//         $user->getAvatar();
+
+//     session(['user_info' => $userInfo]);
+
+//     return session('user_info');
+// });
+
+Route::group(['middleware' => 'new_account_check'], function () {
+    Route::get('/account/create', [AccountController::class, 'create'])->name('auth.account.create');
+    Route::post('/account', [AccountController::class, 'store'])->name('auth.account.store');
+});
