@@ -12,10 +12,6 @@ class AccountController extends Controller
 {
     public function create()
     {
-        if (!session('steam_hex')) {
-            die('No');
-        }
-
         return view('auth.account.create');
     }
 
