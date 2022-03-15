@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{'darkMode': true}" x-init="
         darkMode = JSON.parse(localStorage.getItem('darkMode'));
-        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark': darkMode === true}">
+        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark': darkMode === true}">
 
 <head>
     <meta charset="utf-8">
@@ -21,10 +20,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="dark:bg-primary bg-slate-400">
+<body class="bg-gray-400 dark:bg-primary">
 
-
-    <div class="font-sans text-gray-900 antialiased ">
+    <div class="font-sans antialiased text-gray-900 ">
         <x-public-navbar></x-public-navbar>
         <div class="mt-8">{{ $slot }}</div>
 

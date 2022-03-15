@@ -34,7 +34,15 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    public function applications()
+    {
+        return $this->hasMany('App\Models\Application');
+    }
+
 
     public static function dec2hex($number)
     {

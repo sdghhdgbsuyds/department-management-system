@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apply\ApplicationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home')->name('home');
+
+Route::get('/appication/{applicationForm}/create', [ApplicationsController::class, 'create'])->name('apply.application.create');
+Route::post('/appication/{applicationForm}', [ApplicationsController::class, 'store'])->name('apply.application.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

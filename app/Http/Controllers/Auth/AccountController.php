@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AccountCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -28,5 +29,10 @@ class AccountController extends Controller
         User::create($input);
 
         return redirect()->route('logout')->with('success', 'Account Created. Login to contiue.');
+    }
+
+    public function show(User $user)
+    {
+        return view('auth.account.show', compact('user'));
     }
 }

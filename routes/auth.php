@@ -44,7 +44,7 @@ Route::get('login/discord/handle', function () {
 Route::get('/login/steam/handle', [LoginController::class, 'steam']);
 Route::get('/account/create', [AccountController::class, 'create'])->name('auth.account.create');
 
-Route::get('/account/show', [AccountController::class, 'show'])->name('auth.account.show');
+Route::get('/account/show/{user}', [AccountController::class, 'show'])->name('auth.account.show');
 
 Route::post('/account', [AccountController::class, 'store'])->name('auth.account.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
