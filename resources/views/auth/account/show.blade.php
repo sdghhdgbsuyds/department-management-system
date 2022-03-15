@@ -80,7 +80,9 @@
 
                 <div class="my-4"></div>
 
-                <!-- Experience and education -->
+                @if (config('dms.must_apply'))
+
+
                 <div class="p-3 bg-white rounded-lg shadow-sm dark:bg-secondary dark:text-off-white">
 
                     <div class="">
@@ -129,8 +131,11 @@
                         </div>
 
                     </div>
-                    <!-- End of Experience and education grid -->
+
+
                 </div>
+                @endif
+
                 <!-- End of profile tab -->
                 <div class="my-4"></div>
 
