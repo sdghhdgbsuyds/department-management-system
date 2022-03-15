@@ -28,7 +28,7 @@ class LoginController extends Controller
             $user->last_login = date("Y-m-d H:i:s");
             $user->save();
 
-            return redirect()->intended('/')->with('success', 'Welcome Back!'); // redirect to site
+            return redirect()->intended('account/show/' . $user->steam_hex)->with('success', 'Welcome Back!'); // redirect to site
         }
 
         return $this->redirectToSteam();
