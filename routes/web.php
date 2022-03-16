@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Apply\ApplicationsController;
+use App\Http\Controllers\Apply\ApplicationController;
 use App\Http\Controllers\Auth\AccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.home')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+
+
     Route::get('/account/show/{user}', [AccountController::class, 'show'])->name('auth.account.show');
 
     Route::group(['middleware' => 'must_apply'], function () {
-        Route::get('/application/{applicationForm}/create', [ApplicationsController::class, 'create'])->name('apply.application.create');
-        Route::post('/application/{applicationForm}', [ApplicationsController::class, 'store'])->name('apply.application.store');
+        Route::get('/application/{applicationForm}/create', [ApplicationController::class, 'create'])->name('apply.application.create');
+        Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
     });
 });
 

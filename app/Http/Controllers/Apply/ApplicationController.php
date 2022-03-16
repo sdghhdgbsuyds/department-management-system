@@ -8,7 +8,7 @@ use App\Models\ApplicationForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ApplicationsController extends Controller
+class ApplicationController extends Controller
 {
 
     /**

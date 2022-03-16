@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -43,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Application');
     }
 
+    public function getStatusNameAttribute()
+    {
+        $status_name = DB::table('account_statuses')->where('id', '=', $this->account_status)->first();
+        return $status_name->name;
+    }
 
     public static function dec2hex($number)
     {
@@ -56,5 +62,10 @@ class User extends Authenticatable
             $number = bcdiv($number, '16', 0);
         }
         return $hexval;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'steam_hex';
     }
 }

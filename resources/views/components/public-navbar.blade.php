@@ -63,10 +63,11 @@
                             if (auth()->user()->account_status == 1 && config('dms.must_apply')) {
                                 if (auth()->user()->reapply == 'Y') {
                                     if (auth()->user()->reapply_date <= date('Y-m-d')) {
-                                        echo '<a href=' . route('home') . " class=\"md:mt-0 hover:bg-gray-900 block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg\">Apply For Membership</a>";
+                                        echo '<a href=' . route('apply.application.create', '1') . " class=\"md:mt-0 hover:bg-gray-900 block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg\">Apply For Membership</a>";
+
                                     }
                                 } elseif (is_null(auth()->user()->reapply)) {
-                                    echo '<a href=' . route('home') . " class=\"md:mt-0 hover:bg-gray-900 block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg\">Apply For Membership</a>";
+                                    echo '<a href=' . route('apply.application.create', '1') . " class=\"md:mt-0 hover:bg-gray-900 block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg\">Apply For Membership</a>";
                                 }
                             }
                             ?>

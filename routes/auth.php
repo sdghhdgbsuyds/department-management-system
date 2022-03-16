@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apply\ApplicationController;
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;

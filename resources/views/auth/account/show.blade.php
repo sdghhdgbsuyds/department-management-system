@@ -70,7 +70,8 @@
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Account Status</div>
-                                <div class="px-4 py-2">{{ $user->account_status }}</div>
+                                <div class="px-4 py-2">{{ $user->statusName }}</div>
+
                             </div>
 
                         </div>
@@ -110,7 +111,7 @@
                                         </div>
                                         <div class="grid grid-cols-2">
                                             <div class="px-4 py-2 font-semibold">Status</div>
-                                            <div class="px-4 py-2">Pending Review</div>
+                                            <div class="px-4 py-2">{{ $application->statusName }}</div>
                                         </div>
 
                                     </div>
