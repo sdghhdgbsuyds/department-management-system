@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
 
     Route::get('/account/show/{user}', [AccountController::class, 'show'])->name('auth.account.show');
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
     });
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth']], function () {
         Route::get('/portal', [PortalController::class, 'index'])->name('portal.home');
         Route::get('/portal/timeclock', [TimeclockController::class, 'index'])->name('portal.timeclock.index');
     });

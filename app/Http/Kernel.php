@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'must_apply' => \App\Http\Middleware\MustApply::class,
         'new_account_check' => \App\Http\Middleware\NewAccountCheck::class,
+        'discord_link_check' => \App\Http\Middleware\DiscordLinkCheck::class,
     ];
 }
