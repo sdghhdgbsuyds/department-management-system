@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Apply\ApplicationController;
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'must_apply'], function () {
         Route::get('/application/{applicationForm}/create', [ApplicationController::class, 'create'])->name('apply.application.create');
         Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
+    });
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/portal', [PortalController::class, 'index'])->name('portal.home');
     });
 });
 
