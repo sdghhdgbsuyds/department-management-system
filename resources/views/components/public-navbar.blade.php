@@ -60,7 +60,7 @@
                         <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-gray-900" href="{{ route('auth.account.show', auth()->user()->steam_hex)}}">Your Account</a>
 
                         <?php
-                            if (auth()->user()->account_status == 1) {
+                            if (auth()->user()->account_status == 1 && config('dms.must_apply')) {
                                 if (auth()->user()->reapply == 'Y') {
                                     if (auth()->user()->reapply_date <= date('Y-m-d')) {
                                         echo '<a href=' . route('home') . " class=\"md:mt-0 hover:bg-gray-900 block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg\">Apply For Membership</a>";

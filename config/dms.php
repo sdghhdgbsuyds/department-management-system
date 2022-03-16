@@ -8,6 +8,6 @@ return [
     // 'department_name' => "Blane County SO",
 
     // If members must fill out an application to join department
-    'must_apply' => false,
+    'must_apply' => true,
 
 ];
