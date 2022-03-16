@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Apply\ApplicationController;
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\Portal\TimeclockController;
 use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/portal', [PortalController::class, 'index'])->name('portal.home');
+        Route::get('/portal/timeclock', [TimeclockController::class, 'index'])->name('portal.timeclock.index');
     });
 });
 

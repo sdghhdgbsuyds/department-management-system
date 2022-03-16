@@ -16,7 +16,9 @@
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Home</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Reports</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Timeclock</a>
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.timeclock.index') }}">Timeclock</a>
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Roster</a>
+
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Admin</a>
 
 
