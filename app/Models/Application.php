@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Application extends Model
 {
@@ -49,11 +51,11 @@ class Application extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    // public function getStatusNameAttribute()
-    // {
-    //     $status_name = DB::table('application_statuses')->where('id', '=', $this->status)->first();
-    //     return $status_name->application_status_name;
-    // }
+    public function getStatusNameAttribute()
+    {
+        $status_name = DB::table('application_statuses')->where('id', '=', $this->status)->first();
+        return $status_name->name;
+    }
 
     public function getUsableHistoryAttribute()
     {
