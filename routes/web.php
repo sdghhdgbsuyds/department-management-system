@@ -4,6 +4,7 @@ use App\Http\Controllers\Apply\ApplicationController;
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\Portal\TimeclockController;
 use App\Http\Controllers\PortalController;
+use App\Http\Controllers\Reports\EndPatrolReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,15 +30,21 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
     });
 
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('/portal', [PortalController::class, 'index'])->name('portal.home');
-        Route::get('/portal/timeclock', [TimeclockController::class, 'index'])->name('portal.timeclock.index');
 
-        Route::post('/portal/timeclock/start', [TimeclockController::class, 'start'])->name('portal.timeclock.start');
-        Route::post('/portal/timeclock/stop', [TimeclockController::class, 'stop'])->name('portal.timeclock.stop');
-        Route::get('/portal/timeclock/patrol/{patrol}', [TimeclockController::class, 'show'])->name('portal.timeclock.show');
 
-        Route::get('/portal/reports/{reportForm}/create/{patrol}', []);
+    Route::prefix('portal')->name('portal.')->middleware(['auth'])->group(function () {
+        Route::get('/', [PortalController::class, 'index'])->name('index');
+
+
+        Route::get('/timeclock', [TimeclockController::class, 'index'])->name('timeclock.index');
+        Route::post('/timeclock/start', [TimeclockController::class, 'start'])->name('timeclock.start');
+        Route::post('/timeclock/stop', [TimeclockController::class, 'stop'])->name('timeclock.stop');
+        Route::get('/timeclock/patrol/{patrol}', [TimeclockController::class, 'show'])->name('timeclock.show');
+
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/endpatrol/{patrol}/create', [EndPatrolReportController::class, 'create'])->name('endpatrol.create');
+            Route::post('/endpatrol/{patrol}', [EndPatrolReportController::class, 'store'])->name('endpatrol.store');
+        });
     });
 });
 

@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('patrols', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('user_id');
+            $table->string('report_id')->nullable();
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
-            $table->string('report_id')->nullable();
+            $table->integer('total_time')->nullable();
             $table->timestamps();
         });
     }

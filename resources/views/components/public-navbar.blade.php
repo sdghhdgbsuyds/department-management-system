@@ -73,7 +73,7 @@
                             ?>
 
                         @if (auth()->user()->account_status == 2)
-                        <a href="{{ route('portal.home') }}" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-gray-200">Go
+                        <a href="{{ route('portal.index') }}" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-gray-200">Go
                             to Portal</a>
                         @endif
                         <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-gray-900" href="{{ route('logout') }}">Logout</a>

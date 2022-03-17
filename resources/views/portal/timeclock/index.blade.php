@@ -68,7 +68,7 @@
                                                 @foreach ($patrols_no_report as $patrol)
 
                                                 <tr>
-                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="hover:underline">{{ $patrol->id }}</a></td>
+                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="{{ route('portal.reports.endpatrol.create', $patrol->id) }}" class="hover:underline">{{ $patrol->id }}</a></td>
                                                     <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
 
 
@@ -92,7 +92,7 @@
                     <div class="px-4 sm:px-6 lg:px-8">
                         <div class="items-center text-center sm:flex">
                             <div class="sm:flex-auto">
-                                <h1 class="text-xl font-semibold">Recent Patrols</h1>
+                                <h1 class="text-xl font-semibold">Recent Patrols With Completed Reports</h1>
                                 <p class="mt-2 text-sm">Last 5 Patrols. Click here to view all.</p>
                             </div>
                         </div>

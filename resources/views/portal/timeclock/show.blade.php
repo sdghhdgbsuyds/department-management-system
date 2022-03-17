@@ -40,7 +40,7 @@
         </div>
 
         @if (is_null($patrol->report))
-        <a href="{{ route('portal.reports.patrol.create') }}">
+        <a href="{{ route('portal.reports.endpatrol.create', $patrol->id) }}">
             <x-button>Fill out end of patrol Report</x-button>
         </a>
         @else
