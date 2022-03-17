@@ -41,31 +41,37 @@
 
         <div class="mt-16">
             <div class="justify-between md:flex">
-                <div class="w-full p-4 text-center md:w-1/2">
+
+                <div class="w-full p-4 md:w-1/2">
                     <div class="px-4 sm:px-6 lg:px-8">
-                        <div class="sm:flex sm:items-center">
+                        <div class="items-center text-center sm:flex">
                             <div class="sm:flex-auto">
-                                <h1 class="text-xl font-semibold">Patrols With No Reports</h1>
-                                <p class="mt-2 text-sm">Patrols submitted that require a report.</p>
+                                <h1 class="text-xl font-semibold">Recent Patrols</h1>
+                                <p class="mt-2 text-sm">Last 5 Patrols. Click here to view all.</p>
                             </div>
                         </div>
                         <div class="flex flex-col mt-8">
                             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle">
-                                    <div class="overflow-hidden shadow-sm ring-1 ring-black ring-opacity-5">
-                                        <table class="min-w-full divide-y divide-gray-300">
-                                            <thead class="bg-gray-50">
+                                    <div class="overflow-hidden border border-black shadow-sm ring-1 ring-black ring-opacity-5">
+                                        <table class="min-w-full divide-y divide-black dark:divide-gray-300">
+
+                                            <thead class="bg-gray-600 dark:bg-gray-800 text-off-white">
+
                                                 <tr>
-                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 lg:pl-8">ID</th>
-                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8">ID</th>
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Date</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="bg-white divide-y divide-gray-200">
+                                            <tbody class="text-sm bg-gray-200 divide-y divide-black dark:divide-gray-200 dark:bg-secondary md:text-base">
+
                                                 @foreach ($patrols_no_report as $patrol)
 
                                                 <tr>
-                                                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="text-indigo-600 hover:text-indigo-900 hover:underline">{{ $patrol->id }}</a></td>
-                                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
+                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="hover:underline">{{ $patrol->id }}</a></td>
+                                                    <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
+
+
                                                 </tr>
 
                                                 @endforeach
@@ -81,9 +87,10 @@
                 </div>
 
 
-                <div class="w-full p-4 text-center md:w-1/2">
+
+                <div class="w-full p-4 md:w-1/2">
                     <div class="px-4 sm:px-6 lg:px-8">
-                        <div class="sm:flex sm:items-center">
+                        <div class="items-center text-center sm:flex">
                             <div class="sm:flex-auto">
                                 <h1 class="text-xl font-semibold">Recent Patrols</h1>
                                 <p class="mt-2 text-sm">Last 5 Patrols. Click here to view all.</p>
@@ -92,20 +99,25 @@
                         <div class="flex flex-col mt-8">
                             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle">
-                                    <div class="overflow-hidden shadow-sm ring-1 ring-black ring-opacity-5">
-                                        <table class="min-w-full divide-y divide-gray-300">
-                                            <thead class="bg-gray-50">
+                                    <div class="overflow-hidden border border-black shadow-sm ring-1 ring-black ring-opacity-5">
+                                        <table class="min-w-full divide-y divide-black dark:divide-gray-300">
+
+                                            <thead class="bg-gray-600 dark:bg-gray-800 text-off-white">
+
                                                 <tr>
-                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 lg:pl-8">ID</th>
-                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8">ID</th>
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Date</th>
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Length</th>
+
                                                 </tr>
                                             </thead>
-                                            <tbody class="bg-white divide-y divide-gray-200">
+                                            <tbody class="text-sm bg-gray-200 divide-y divide-black dark:divide-gray-200 dark:bg-secondary md:text-base">
                                                 @foreach ($patrols as $patrol)
 
                                                 <tr>
-                                                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="text-indigo-600 hover:text-indigo-900 hover:underline">{{ $patrol->id }}</a></td>
-                                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
+                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="hover:underline">{{ $patrol->id }}</a></td>
+                                                    <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
+                                                    <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">1 hour 30 mins</td>
                                                 </tr>
 
                                                 @endforeach

@@ -16,7 +16,7 @@ class TimeclockController extends Controller
     public function index()
     {
 
-        $patrols = Patrol::where('user_id', auth()->user()->steam_hex)->latest()->take(5)->get();
+        $patrols = Patrol::where('user_id', auth()->user()->steam_hex)->whereNotNull('end_time')->latest()->take(5)->get();
 
         $patrols_no_report = $patrols->whereNull('report');
 
