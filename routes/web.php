@@ -32,6 +32,9 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/portal', [PortalController::class, 'index'])->name('portal.home');
         Route::get('/portal/timeclock', [TimeclockController::class, 'index'])->name('portal.timeclock.index');
+
+        Route::post('/portal/timeclock/start', [TimeclockController::class, 'start'])->name('portal.timeclock.start');
+        Route::post('/portal/timeclock/stop', [TimeclockController::class, 'stop'])->name('portal.timeclock.stop');
     });
 });
 

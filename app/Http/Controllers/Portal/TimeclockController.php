@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Models\Patrol;
 use Illuminate\Http\Request;
 
 class TimeclockController extends Controller
@@ -14,28 +15,48 @@ class TimeclockController extends Controller
      */
     public function index()
     {
-        return view('portal.timeclock.index');
+
+        $patrols = Patrol::where('user_id', auth()->user()->steam_hex)->latest()->take(5)->get();
+
+        $patrols_no_report = $patrols->whereNull('report');
+
+        return view('portal.timeclock.index', compact('patrols', 'patrols_no_report'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function start()
     {
-        //
+        $patrol_id = date("mdY-His");
+
+        $patrol = Patrol::create([
+            'user_id' => auth()->user()->steam_hex,
+            'start_time' => now(),
+            'id' => $patrol_id,
+        ]);
+
+        auth()->user()->update([
+            'is_on_duty' => true,
+            'last_action' => now(),
+            'active_patrol_id' => $patrol_id,
+        ]);
+
+        return redirect()->route('portal.timeclock.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function stop()
     {
-        //
+        $active_patrol = Patrol::findOrFail(auth()->user()->active_patrol_id);
+
+        $active_patrol->update([
+            'end_time' => now(),
+        ]);
+
+        auth()->user()->update([
+            'is_on_duty' => false,
+            'last_action' => now(),
+            'active_patrol_id' => null,
+        ]);
+
+        return redirect()->route('portal.timeclock.index');
     }
 
     /**

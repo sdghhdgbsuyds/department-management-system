@@ -71,8 +71,13 @@
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Account Status</div>
                                 <div class="px-4 py-2">{{ $user->statusName }}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Discord Name</div>
+                                <div class="px-4 py-2">{{ $user->discord_name }}</div>
 
                             </div>
+
 
                         </div>
                     </div>
@@ -113,6 +118,7 @@
                                             <div class="px-4 py-2 font-semibold">Status</div>
                                             <div class="px-4 py-2">{{ $application->statusName }}</div>
                                         </div>
+
 
                                     </div>
                                 </div>
