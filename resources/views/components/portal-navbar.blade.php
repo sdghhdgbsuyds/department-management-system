@@ -16,13 +16,10 @@
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Home</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Reports</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.timeclock.index') }}">Timeclock</a>
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/timeclock') ? 'text-white' : '' }}" href="{{ route('portal.timeclock.index') }}">Timeclock</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Roster</a>
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}" href="{{ route('portal.home') }}">Admin</a>
-
-
-
 
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                 <button @click="open = !open" class="flex flex-row items-center w-full px-2 py-2 mt-2 font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">

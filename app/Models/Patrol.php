@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Patrol extends Model
 {
@@ -18,4 +19,16 @@ class Patrol extends Model
         'start_time',
         'end_time',
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+    ];
+
+    public function user()
+    {
+        $user = DB::table('users')->where('steam_hex', '=', $this->user_id)->first();
+        return $user;
+    }
 }

@@ -12,6 +12,11 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -22,7 +27,8 @@
 
 <body class="bg-gray-400 dark:bg-primary">
 
-    <div class="font-sans antialiased text-gray-900 ">
+    <div class="font-sans antialiased text-gray-900 dark:text-off-white">
+
         <x-portal-navbar></x-portal-navbar>
         <div class="mt-8">{{ $slot }}</div>
 

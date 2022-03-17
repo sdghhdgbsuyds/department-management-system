@@ -46,8 +46,8 @@
                     <div class="px-4 sm:px-6 lg:px-8">
                         <div class="items-center text-center sm:flex">
                             <div class="sm:flex-auto">
-                                <h1 class="text-xl font-semibold">Recent Patrols</h1>
-                                <p class="mt-2 text-sm">Last 5 Patrols. Click here to view all.</p>
+                                <h1 class="text-xl font-semibold">Recent Patrols Without a Report</h1>
+                                <p class="mt-2 text-sm">Reports that don't have an end of watch report attached. Please click the patrol id to fill out end of watch.</p>
                             </div>
                         </div>
                         <div class="flex flex-col mt-8">
@@ -115,7 +115,7 @@
                                                 @foreach ($patrols as $patrol)
 
                                                 <tr>
-                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="#" class="hover:underline">{{ $patrol->id }}</a></td>
+                                                    <td class="py-4 pl-4 pr-3 font-medium text-indigo-500 dark:text-action whitespace-nowrap sm:pl-6 lg:pl-8"><a href="{{ route('portal.timeclock.show', $patrol->id) }}" class="hover:underline">{{ $patrol->id }}</a></td>
                                                     <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">{{ $patrol->created_at->format('m-d-Y') }}</td>
                                                     <td class="px-3 py-4 text-gray-700 dark:text-off-white whitespace-nowrap">1 hour 30 mins</td>
                                                 </tr>
