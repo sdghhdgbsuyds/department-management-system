@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Models\EndPatrolReport;
 use App\Models\Patrol;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,8 @@ class TimeclockController extends Controller
 
         $patrols = Patrol::where('user_id', auth()->user()->steam_hex)->orderBy('created_at', 'desc')->whereNotNull('end_time')->get();
 
-        $patrols_no_report = $patrols->whereNull('report');
-        $patrols = $patrols->whereNotNull('report')->take(5);
+        $patrols_no_report = $patrols->whereNull('report_id');
+        $patrols = $patrols->whereNotNull('report_id')->take(5);
 
         return view('portal.timeclock.index', compact('patrols', 'patrols_no_report'));
     }
@@ -68,7 +69,9 @@ class TimeclockController extends Controller
      */
     public function show(Patrol $patrol)
     {
-        return view('portal.timeclock.show', compact('patrol'));
+        $epr = EndPatrolReport::where('patrol_id', $patrol->id)->get()[0];
+
+        return view('portal.timeclock.show', compact('patrol', 'epr'));
     }
 
     /**

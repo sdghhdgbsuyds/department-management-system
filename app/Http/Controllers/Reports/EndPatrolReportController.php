@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EndofPatrolReport;
+use App\Models\EndPatrolReport;
 use App\Models\Patrol;
-use App\Models\Report;
-use App\Models\ReportForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,39 +21,21 @@ class EndPatrolReportController extends Controller
         return view('portal.reports.endpatrol.create', compact('patrol'));
     }
 
-    public function store(ReportForm $reportForm, Patrol $patrol, Request $request)
+    public function store(Patrol $patrol, EndofPatrolReport $request)
     {
-        $questions = json_decode($reportForm->questions);
-
-        $rules = [];
-
-        foreach ($questions as $question) {
-            $rules[$question->name] = $question->rules;
-        }
-
-
-        $answers = $request->validate($rules);
-
-        $id = 'EP' . date("mdY-His");
-
+        $id = 'EPR' . $patrol->id;
+        $input = $request->validated();
         $input['user_steam_hex'] = Auth::user()->steam_hex;
-        $input['questions'] = json_encode($answers);
-        $input['report_form_id'] = $reportForm->id;
+        $input['patrol_id'] = $patrol->id;
         $input['id'] = $id;
 
+        $patrol->report_id = $id;
+        $patrol->save();
 
 
-        $uptest = $patrol->update([
-            'report_id' => $id,
-        ]);
+        EndPatrolReport::create($input);
 
-
-
-        dd($patrol);
-
-        Report::create($input);
-
-        return redirect()->route('portal.home')->with('success', 'Report Submitted.');
+        return redirect()->route('portal.index')->with('success', 'Report Submitted.');
     }
 
     public function show($id)
