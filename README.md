@@ -16,9 +16,14 @@ Coming Soon
 
 ## Installation
 
-<b>This project is still a Work In Progress. Do not use in production</b>
-
-Detailed installation instructions coming soon!
+1. Clone Repo: `git clone https://github.com/gsbarbo/department-management-system.git`
+2. cd into folder: `cd department-management-system`
+3. Run `composer install` & `npm install`
+4. Build css `npm run [dev|prod]
+5. Copy and Edit .env file
+6. Run `php artisan key:generate`
+7. Run `php artisan migrate`
+8. Use Laragon or `php artisan serve` to start website
 
 ## Built With
 
