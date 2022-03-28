@@ -69,7 +69,8 @@
         </div>
 
 
-        <div class="text-2xl font-semibold border-b-2">Runs Summary</div>
+        <div class="text-2xl font-semibold border-b-2 mt-5">Runs Summary</div>
+
         <div class="text-center lg:flex lg:justify-around">
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="town_runs" :value="__('Runs in Town')" />
@@ -92,7 +93,8 @@
             </div>
         </div>
 
-        <div class="text-2xl font-semibold border-b-2">Arrests Summary</div>
+        <div class="text-2xl font-semibold border-b-2 mt-5">Arrests Summary</div>
+
         <div class="text-center lg:flex lg:justify-around">
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="misdemeanor" :value="__('Misdemeanor')" />
@@ -101,21 +103,21 @@
 
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="felony" :value="__('Felony')" />
-                <input class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->felony }}</p>
+                <p class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->felony }}</p>
             </div>
 
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="warrant" :value="__('Warrant')" />
-                <input class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->warrant }}</p>
+                <p class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->warrant }}</p>
             </div>
 
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="DUI" :value="__('DUI')" />
-                <input class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->DUI }}</p>
+                <p class="w-full p-0 text-3xl text-center bg-transparent border-0 border-b border-white handwriting">{{ $epr->DUI }}</p>
             </div>
         </div>
 
-        <div class="text-2xl font-semibold border-b-2">Reports Summary</div>
+        <div class="text-2xl font-semibold border-b-2 mt-5">Reports Summary</div>
         <div class="text-center lg:flex lg:justify-around">
             <div class="w-full p-1 lg:w-1/4">
                 <x-label class="text-white" for="cases" :value="__('Cases')" />
@@ -142,7 +144,8 @@
         <p class="block w-full text-3xl text-white rounded-lg handwriting h-10">@php if($epr->other_report_numbers){echo $erp->other_report_numbers;}else{echo "No other reports.";} @endphp</p>
 
 
-        <div class="text-2xl font-semibold border-b-2">Call Summary</div>
+        <div class="text-2xl font-semibold border-b-2 mt-5">Call Summary</div>
+
         <p class="block w-full text-3xl text-white rounded-lg handwriting h-10">{{ $epr->call_summary }}</p>
 
 
