@@ -69,8 +69,8 @@ class TimeclockController extends Controller
      */
     public function show(Patrol $patrol)
     {
-        $epr = EndPatrolReport::where('patrol_id', $patrol->id)->get()[0];
+        $report = EndPatrolReport::where('patrol_id', $patrol->id)->get()[0];
 
-        return view('portal.timeclock.show', compact('patrol', 'epr'));
+        return view('portal.timeclock.show', compact('patrol', 'report'));
     }
 }

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container flex justify-between w-full mx-auto lg:w-3/5">
-        <a href="#" class="">
+        <a href="{{ route('portal.timeclock.index') }}" class="">
             <x-button>Go to Timeclock</x-button>
         </a>
 
